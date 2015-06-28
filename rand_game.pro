@@ -8,13 +8,18 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
+CONFIG += c++11
+
 TARGET = rand_game
 TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        rand_game.cpp
+        rand_game.cpp \
+    game_rect.cpp
 
-HEADERS  += rand_game.h
+HEADERS  += rand_game.h \
+    game_rect.h \
+    ui_rand_game.h
 
 FORMS    += rand_game.ui
