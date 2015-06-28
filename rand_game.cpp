@@ -43,6 +43,7 @@ void rand_game::scoreup()
 
 void rand_game::startgame()
 {
+    gameRect->setVisible(1);
     ui->diffLabel->setVisible(0);
     ui->diffBox->setVisible(0);
     points = 0;
@@ -67,10 +68,10 @@ void rand_game::startgame()
 
 void rand_game::gameover()
 {
+    gameRect->setVisible(0);
     gameTimer->stop();
     perThousand->stop();
     rectRespawn->stop();
-    scene->clear();
     ui->scores_label->setVisible(0);
     ui->startButton->setVisible(1);
     ui->scoreLabel->setText("Score: " + QString::number(points));
@@ -80,15 +81,11 @@ void rand_game::gameover()
     ui->diffBox->setVisible(1);
 }
 void rand_game::redraw(){
-    //scene->clear();
-
     rectX = (qrand() % (sceneW - sceneW/4));
     rectY = (qrand() % (sceneH - sceneH/4));
 
-    //game_rect* gameRect = new game_rect();
     gameRect->setPos(rectX, rectY);
     gameRect->update();
 
-    //scene->addItem(gameRect);
     ui->graphicsView->setScene(scene);
 }
