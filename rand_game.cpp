@@ -41,12 +41,19 @@ void rand_game::scoreup()
     qDebug() << "im here" << points;
 }
 
+void rand_game::mousePressEvent(QMouseEvent *event)
+{
+    miss++;
+}
+
 void rand_game::startgame()
 {
+    ui->missLabel->setVisible(0);
     gameRect->setVisible(1);
     ui->diffLabel->setVisible(0);
     ui->diffBox->setVisible(0);
     points = 0;
+    miss = 0;
     ui->startButton->setVisible(0);
     ui->scoreLabel->setVisible(0); //Score after game
     ui->scores_label->setVisible(1);
@@ -68,6 +75,8 @@ void rand_game::startgame()
 
 void rand_game::gameover()
 {
+    ui->missLabel->setVisible(1);
+    ui->missLabel->setText("Missed: " + QString::number(miss - points));
     gameRect->setVisible(0);
     gameTimer->stop();
     perThousand->stop();
